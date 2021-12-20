@@ -26,7 +26,7 @@ use crate::{
 // TODO: Message channels are currently always full-duplex, because the unreliable / reliable
 // channels backing them are always full-duplex.  We could add configuration to limit a channel to
 // send or receive only, and to error if the remote sends to a send-only channel.
-#[derive(Debug)]
+#[derive(Copy, Clone, Debug)]
 pub struct MessageChannelSettings {
     pub channel: PacketChannel,
     pub channel_mode: MessageChannelMode,
@@ -38,7 +38,7 @@ pub struct MessageChannelSettings {
     pub packet_buffer_size: usize,
 }
 
-#[derive(Debug)]
+#[derive(Copy, Clone, Debug)]
 pub enum MessageChannelMode {
     Unreliable,
     Reliable {
